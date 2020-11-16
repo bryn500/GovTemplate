@@ -1,0 +1,275 @@
+﻿.js-enabled .cookie-banner {
+    display: none
+}
+
+.cookie-banner {
+    font-family: "nta",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.1428571429;
+    padding: 10px 0;
+    background-color: #f3f2f1
+}
+
+@media print {
+    .cookie-banner {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .cookie-banner {
+        font-size: 16px;
+        line-height: 1.25
+    }
+}
+
+@media print {
+    .cookie-banner {
+        font-size: 14pt;
+        line-height: 1.2
+    }
+}
+
+.cookie-banner--services {
+    display: none
+}
+
+.cookie-banner__message {
+    display: inline-block;
+    padding-bottom: 10px;
+    font-family: "nta",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.1428571429
+}
+
+@media print {
+    .cookie-banner__message {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .cookie-banner__message {
+        font-size: 16px;
+        line-height: 1.25
+    }
+}
+
+@media print {
+    .cookie-banner__message {
+        font-size: 14pt;
+        line-height: 1.2
+    }
+}
+
+@media (min-width: 48.0625em) {
+    .cookie-banner__message {
+        padding-right: 20px
+    }
+}
+
+.cookie-banner__button.govuk-grid-column-one-half-from-desktop {
+    padding: 0
+}
+
+@media (min-width: 48.0625em) {
+    .cookie-banner__button .govuk-button {
+        width: 90%
+    }
+}
+
+@media (max-width: 48.0525em) {
+    .cookie-banner__button .govuk-button {
+        margin-bottom: 20px
+    }
+}
+
+.cookie-banner__button-accept {
+    display: none
+}
+
+.js-enabled .cookie-banner__button-accept {
+    display: inline-block
+}
+
+.cookie-banner__confirmation {
+    display: none;
+    position: relative;
+    padding: 5px
+}
+
+.cookie-banner__confirmation:focus, #global-header .cookie-banner__confirmation.search__input[type="search"]:focus {
+    outline: none
+}
+
+.cookie-banner__confirmation-message, .cookie-banner__hide-button {
+    display: block
+}
+
+@media (min-width: 48.0625em) {
+    .cookie-banner__confirmation-message, .cookie-banner__hide-button {
+        display: inline-block
+    }
+}
+
+.cookie-banner__confirmation-message {
+    margin-right: 20px
+}
+
+@media (min-width: 48.0625em) {
+    .cookie-banner__confirmation-message {
+        max-width: 90%;
+        margin-bottom: 0
+    }
+}
+
+.cookie-banner__hide-button {
+    font-family: "nta",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    outline: 0;
+    border: 0;
+    background: none;
+    text-decoration: underline;
+    color: #1d70b8;
+    padding: 0;
+    margin-top: 10px
+}
+
+@media print {
+    .cookie-banner__hide-button {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .cookie-banner__hide-button {
+        font-size: 19px;
+        line-height: 1.3157894737
+    }
+}
+
+@media print {
+    .cookie-banner__hide-button {
+        font-size: 14pt;
+        line-height: 1.15
+    }
+}
+
+.cookie-banner__hide-button:hover {
+    color: #003078;
+    cursor: pointer
+}
+
+.cookie-banner__hide-button:focus, #global-header .cookie-banner__hide-button.search__input[type="search"]:focus {
+    outline: 3px solid transparent;
+    color: #0b0c0c;
+    background-color: #fd0;
+    box-shadow: 0 -2px #fd0,0 4px #0b0c0c;
+    text-decoration: none
+}
+
+@media (min-width: 48.0625em) {
+    .cookie-banner__hide-button {
+        margin-top: 0;
+        position: absolute;
+        right: 5px
+    }
+}
+
+.cookie-banner__buttons--flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline
+}
+
+.cookie-banner__buttons--flex .govuk-button, .cookie-banner__buttons--flex .cookie-banner__link {
+    flex-grow: 1;
+    flex-basis: 10rem;
+    margin-right: 15px;
+    margin-bottom: 15px
+}
+
+#global-cookie-message.cookie-banner {
+    background-color: #f3f2f1;
+    padding: 20px 0;
+    box-sizing: border-box
+}
+
+#global-cookie-message.cookie-banner .cookie-banner__message, #global-cookie-message.cookie-banner .cookie-banner__buttons, #global-cookie-message.cookie-banner .cookie-banner__confirmation, #global-cookie-message.cookie-banner .cookie-banner__confirmation-message {
+    font-family: "nta",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25
+}
+
+@media print {
+    #global-cookie-message.cookie-banner .cookie-banner__message, #global-cookie-message.cookie-banner .cookie-banner__buttons, #global-cookie-message.cookie-banner .cookie-banner__confirmation, #global-cookie-message.cookie-banner .cookie-banner__confirmation-message {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    #global-cookie-message.cookie-banner .cookie-banner__message, #global-cookie-message.cookie-banner .cookie-banner__buttons, #global-cookie-message.cookie-banner .cookie-banner__confirmation, #global-cookie-message.cookie-banner .cookie-banner__confirmation-message {
+        font-size: 19px;
+        line-height: 1.3157894737
+    }
+}
+
+@media print {
+    #global-cookie-message.cookie-banner .cookie-banner__message, #global-cookie-message.cookie-banner .cookie-banner__buttons, #global-cookie-message.cookie-banner .cookie-banner__confirmation, #global-cookie-message.cookie-banner .cookie-banner__confirmation-message {
+        font-size: 14pt;
+        line-height: 1.15
+    }
+}
+
+#global-cookie-message.cookie-banner .cookie-banner__message {
+    margin-bottom: 0
+}
+
+#global-cookie-message.cookie-banner p {
+    font-family: "nta",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    margin: 0 0 10px 0
+}
+
+@media print {
+    #global-cookie-message.cookie-banner p {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    #global-cookie-message.cookie-banner p {
+        font-size: 19px;
+        line-height: 1.3157894737
+    }
+}
+
+@media print {
+    #global-cookie-message.cookie-banner p {
+        font-size: 14pt;
+        line-height: 1.15
+    }
+}
+
+@media (min-width: 48.0625em) {
+    #global-cookie-message.cookie-banner .cookie-banner__confirmation-message {
+        margin-bottom: 0
+    }
+}

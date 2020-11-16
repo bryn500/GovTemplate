@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en-gb" class="govuk-template">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>
+        @ViewData["Title"] - @Consts.AppName
+    </title>
+
+    @if (ViewBag.MetaNameTags != null)
+    {
+        foreach (var meta in ViewBag.MetaNameTags)
+        {
+            <meta name="@meta.Key" content="@meta.Value">
+        }
+    }
+
+    @RenderSection("meta", required: false)
+
+    <!-- Theme/Favicon -->
+    <partial name="Layout/_Favicons" />
+
+    <!-- Sharing -->
+    <meta property="og:image" content="~/assets/images/govuk-opengraph-image.png">
+
+    <!-- Styles -->
+    <link href="~/assets/css/all.css" rel="stylesheet" asp-append-version="true" />
+
+    <!-- Analytics -->
+    <partial name="layout/_Analytics" />    
+</head>
+<body class="govuk-template__body">
+    <script asp-add-nonce="true">document.body.className = ((document.body.className) ? document.body.className + " js-enabled" : "js-enabled");</script>
+
+    @if (Context.Request.Host.Value.StartsWith("localhost"))
+    {
+        <!-- stack overflow mini profiler -->
+        <mini-profiler />
+    }
+
+    <!-- Cookie Banner -->
+    <partial name="layout/_CookieConsent" />
+
+    <!-- Skip to content link -->
+    <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+
+    <!-- Page header -->
+    <partial name="layout/_Header" />
+
+    <!-- Main content -->
+    <div class="govuk-width-container">
+        <!-- Want to help banner -->
+        <partial name="layout/_Banner" />
+
+        <main class="govuk-main-wrapper" id="main-content" role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Page footer -->
+    <partial name="layout/_Footer" />
+
+    <!-- Scripts  -->
+    <script asp-add-nonce="true">
+        var app = {
+            gaKey: '@KeysConfig.Value.GoogleAnalyticsKey'
+        };
+    </script>
+    <partial name="Layout/_AntiForgery" />
+
+    <script src="~/assets/js/dependencies.min.js" asp-append-version="true"></script>
+    <script src="~/assets/js/app.min.js" asp-append-version="true" async></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿@{
+    @using Microsoft.AspNetCore.Http.Features
+
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var showBanner = !consentFeature?.CanTrack ?? false;
+    var cookieString = consentFeature?.CreateConsentCookie();
+    var path = Context?.Request?.Path;
+    var isCookiePage = path.HasValue && path.Value.ToString().StartsWith("/help/cookies", StringComparison.OrdinalIgnoreCase);
+}
+
+
+@if (showBanner && !isCookiePage)
+{
+    <div id="global-cookie-message" class="cookie-banner govuk-clearfix" role="region" aria-label="cookie banner">
+        <div class="cookie-banner__wrapper govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <div class="cookie-banner__message">
+                        <h2 class="govuk-heading-m">Tell us whether you accept cookies</h2>
+                        <p class="govuk-body">
+                            We use <a class="govuk-link" asp-controller="Help" asp-action="CookieDetails">cookies to collect information</a> about how you use this site.
+                            We use this information to make the website work as well as possible and improve government services.
+                        </p>
+                    </div>
+                    <div class="cookie-banner__buttons">
+                        <div class="cookie-banner__button cookie-banner__button-accept govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
+                            <button class="button govuk-button button--inline js-accept-all-cookies" type="submit" data-cookie-string="@cookieString">Accept all cookies</button>
+                        </div>
+                        <div class="cookie-banner__button cookie-banner__button-settings govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
+                            <a class="button govuk-button button--inline" role="button" asp-controller="Help" asp-action="Cookies">Set cookie preferences</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cookie-banner__confirmation govuk-width-container" tabindex="-1">
+            <p class="cookie-banner__confirmation-message" role="alert">
+                You’ve accepted all cookies. You can <a class="govuk-link" asp-controller="Help" asp-action="Cookies">change your cookie settings</a> at any time.
+            </p>
+            <button class="cookie-banner__hide-button">Hide</button>
+        </div>
+    </div>
+}
+
+<script asp-add-nonce="true">
+    var cookieBanner = document.querySelector('#global-cookie-message');
+    var cookieAsk = document.querySelector('.cookie-banner__wrapper');
+    var cookieAcceptConfirmation = document.querySelector('.cookie-banner__confirmation');
+    var acceptAllCookiesButton = document.querySelector(".js-accept-all-cookies");
+    var hideAcceptMessage = document.querySelector('.cookie-banner__hide-button');
+
+    if (cookieBanner) {
+        cookieBanner.classList.add('show');
+        acceptAllCookiesButton.addEventListener("click", function (event) {
+            document.cookie = acceptAllCookiesButton.dataset.cookieString;
+            cookieAsk.classList.add('hide');
+            cookieAcceptConfirmation.classList.add('show');
+        }, false);
+
+        hideAcceptMessage.addEventListener('click', function (event) {
+            cookieBanner.classList.remove('show');
+        });
+    }
+</script>

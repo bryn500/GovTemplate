@@ -1,0 +1,62 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+  - master
+
+pool:
+  vmImage: "windows-latest"
+  demands: npm
+
+steps:
+  - task: DotNetCoreCLI@2
+    displayName: Restore
+    inputs:
+      command: restore
+      projects: "**/*.csproj"
+
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      projects: "**/*.csproj"
+      arguments: "--configuration $(BuildConfiguration)"
+
+  - task: DotNetCoreCLI@2
+    displayName: Test
+    inputs:
+      command: test
+      projects: |
+        **/*.Tests/*.csproj
+      arguments: "--configuration $(BuildConfiguration)"
+
+  - task: Npm@1
+    displayName: "npm install Web"
+    inputs:
+      command: ci
+      workingDir: src/Web
+      verbose: false
+
+  - task: Npm@1
+    displayName: "npm build Web"
+    inputs:
+      command: custom
+      workingDir: src/Web
+      verbose: false
+      customCommand: "run build"
+
+  - task: DotNetCoreCLI@2
+    displayName: "Publish Web"
+    inputs:
+      command: publish
+      publishWebProjects: false
+      projects: "**/*Web.csproj"
+      arguments: "--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)/Web"
+      zipAfterPublish: True
+
+  - task: PublishBuildArtifacts@1
+    displayName: "Publish Artifact"
+    inputs:
+      PathtoPublish: "$(build.artifactstagingdirectory)"
+    condition: succeededOrFailed()

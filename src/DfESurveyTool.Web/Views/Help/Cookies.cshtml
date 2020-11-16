@@ -1,0 +1,90 @@
+﻿@model CookiePreferencesViewModel
+<h1 class="govuk-heading-l ">
+    Cookie Preferences
+</h1>
+
+<p>Cookies are files saved on your phone, tablet or computer when you visit a website.</p>
+<p>We use cookies to store information about how you use the this website, such as the pages you visit.</p>
+
+<!-- Todo: show with no js/hide with -->
+<div class="js-disabled">
+    <div>
+        <p>We use Javascript to set most of our cookies. Unfortunately Javascript is not running on your browser, so you cannot change your settings. You can try:</p>
+        <ul>
+            <li>reloading the page</li>
+            <li>turning on Javascript in your browser</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Todo: hide with no js -->
+<div class="cookie-settings__form-wrapper">
+    <p class="govuk-body">We use 2 types of cookie. You can choose which cookies you're happy for us to use.</p>
+
+    <form method="post">
+        <!-- Analytics -->
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="analytics-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h2 class="govuk-fieldset__heading">
+                        Analytics Cookies that measure website use
+                    </h2>
+                </legend>
+                <div id="analytics-hint" class="govuk-hint">
+                    <p>
+                        We use Google Analytics to measure how you use the website so we can improve it based on user needs.
+                        We do not allow Google to use or share the data about how you use this site.
+                    </p>
+                    <p>Google Analytics sets cookies that store anonymised information about:</p>
+                    <ul>
+                        <li>how you got to the site</li>
+                        <li>the pages you visit on the site, and how long you spend on each page</li>
+                        <li>what you click on while you're visiting the site</li>
+                    </ul>
+                    <p>
+                        We use Application insights to measure how you use the website, track any errors and failures that occur and measure performance
+                    </p>
+                    <p>Application insights sets cookies that store anonymised information about:</p>
+                    <ul>
+                        <li>how you got to the site</li>
+                        <li>the pages you visit on this site</li>
+                    </ul>
+                </div>
+
+                <div class="govuk-radios ">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" asp-for="Analytics" type="radio" value="True">
+                        <label class="govuk-label govuk-radios__label" asp-for="Analytics">
+                            Use cookies that measure my website use
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" asp-for="Analytics" id="analytics2" type="radio" value="False">
+                        <label class="govuk-label govuk-radios__label" for="analytics2">
+                            Do not use cookies that measure my website use
+                        </label>
+
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <!-- Necessary -->
+        <div>
+            <h2 class="govuk-heading-m">Strictly necessary cookies</h2>
+            <p>These essential cookies do things like provide login for the areas that require it and improve security of the site</p>
+            <p>They always need to be on.</p>
+        </div>
+
+        <!-- Submit -->
+        <button class="button govuk-button" type="submit">Save changes</button>
+    </form>
+
+    <p>
+        Find out more
+        <a asp-controller="Help" asp-action="CookieDetails">
+            details about the specific cookies and what they are for
+        </a>
+        on this site
+    </p>
+</div>

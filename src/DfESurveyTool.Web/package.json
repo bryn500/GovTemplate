@@ -1,0 +1,30 @@
+{
+  "name": "dfe-template-netcore",
+  "version": "1.0.0",
+  "description": ".Net Core 3.1 template for DfE with GDS styling",
+  "private": true,
+  "repository": {
+    "type": "git"
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch"
+  },
+  "author": "SDT",
+  "license": "MIT",
+  "dependencies": {
+    "govuk-frontend": "^3.9.1"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.1.2",
+    "css-loader": "^3.6.0",
+    "file-loader": "^4.2.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "sass-loader": "^7.3.1",
+    "terser-webpack-plugin": "^1.4.5",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  }
+}

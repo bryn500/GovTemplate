@@ -1,0 +1,9 @@
+﻿// govuk styles
+// todo: possibly get a list of all separate scss files in order
+//       to selectively import components being used to reduce size of css
+@import "node_modules/govuk-frontend/govuk/all";
+
+// Components
+@import "components/_common";
+@import "components/_govuk-extensions";
+@import "components/_cookie-banner";

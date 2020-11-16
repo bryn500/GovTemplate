@@ -10,8 +10,9 @@ Technologies used:
 
 - ASP.Net Core sdk 3.1.2
 - Entity Framework Core 3.1.2
-- Webpack 4
 - Azure AD
+- Webpack 4
+- GDS styles
 
 ## Installation
 

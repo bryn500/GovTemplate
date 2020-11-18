@@ -1,4 +1,4 @@
-﻿using DfESurveyTool.Web.Models;
+﻿using DfESurveyTool.Web.Models.Shared;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -25,7 +25,7 @@ namespace DfESurveyTool.Web.Controllers
         }
 
         /// <summary>  
-        /// set the cookie  
+        /// Send with the response to the client an instruction to add a cookie  
         /// </summary>  
         /// <param name="key">key (unique indentifier)</param>  
         /// <param name="value">value to store in cookie object</param>  
@@ -45,7 +45,7 @@ namespace DfESurveyTool.Web.Controllers
         }
 
         /// <summary>  
-        /// Delete the key  
+        /// Send with the response to the client an instruction to delete the cookie with the specified key  
         /// </summary>  
         /// <param name="key">Key</param>  
         public void RemoveCookie(string key)

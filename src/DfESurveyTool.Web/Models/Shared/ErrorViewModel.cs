@@ -1,6 +1,6 @@
 using System;
 
-namespace DfESurveyTool.Web.Models
+namespace DfESurveyTool.Web.Models.Shared
 {
     public class ErrorViewModel
     {

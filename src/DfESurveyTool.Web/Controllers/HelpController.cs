@@ -1,10 +1,10 @@
 ﻿using DfESurveyTool.Web.Config;
-using DfESurveyTool.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
 using Microsoft.AspNetCore.Http.Features;
 using DfESurveyTool.Web.Consts;
+using DfESurveyTool.Web.Models.Help;
 
 namespace DfESurveyTool.Web.Controllers
 {

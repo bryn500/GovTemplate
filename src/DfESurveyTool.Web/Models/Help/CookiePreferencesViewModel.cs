@@ -1,4 +1,4 @@
-﻿namespace DfESurveyTool.Web.Models
+﻿namespace DfESurveyTool.Web.Models.Help
 {
     public class CookiePreferencesViewModel
     {

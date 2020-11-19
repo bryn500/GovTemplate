@@ -1,5 +1,4 @@
 ﻿@model ExampleFormViewModel
-
 <!-- Validation -->
 <partial name="Components/_ValidationSummary" model="ViewData.ModelState" />
 
@@ -11,47 +10,7 @@
 <div class="cookie-settings__form-wrapper">
     <form method="post">
 
-        @functions {
-            string GetErrorContainerClass(string fieldName)
-            {
-                var hasError = ViewData?.ModelState["Radio"]?.Errors?.Any();
-
-                if (hasError.HasValue && hasError == true)
-                    return "govuk-form-group--error";
-                else
-                    return "";
-            }
-        }
-        <div class="govuk-form-group @GetErrorContainerClass("Radio")">
-            <fieldset class="govuk-fieldset" aria-describedby="radio-hint">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                    <h2 class="govuk-fieldset__heading">
-                        Yes or No?
-                    </h2>
-                </legend>
-                <div id="radio-hint" class="govuk-hint">
-                    <p>
-                        This is an example of a radio button
-                    </p>
-                </div>
-
-                <div class="govuk-radios ">
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" asp-for="Radio" type="radio" value="True">
-                        <label class="govuk-label govuk-radios__label" asp-for="Radio">
-                            Use cookies that measure my website use
-                        </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" asp-for="Radio" id="radio2" type="radio" value="False">
-                        <label class="govuk-label govuk-radios__label" for="radio2">
-                            Do not use cookies that measure my website use
-                        </label>
-
-                    </div>
-                </div>
-            </fieldset>
-        </div>        
+        <partial name="FormComponents/_RadioButtonList" for="RadioQuestion" />
 
         <!-- Submit -->
         <button class="button govuk-button" type="submit">Submit</button>

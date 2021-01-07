@@ -4,5 +4,6 @@
     {
         public const string Home = "Home";
         public const string Test = "Test";
+        public const string Example = "Example";
     }
 }

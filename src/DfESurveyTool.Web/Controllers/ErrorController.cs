@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace DfESurveyTool.Web.Controllers
 {
     [AllowAnonymous]
-    [ResponseCache(CacheProfileName = "None")]
     [Route("[controller]")]
     public class ErrorController : BaseController
     {

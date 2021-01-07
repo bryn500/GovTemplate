@@ -1,0 +1,47 @@
+﻿@model CheckBoxesViewModel
+
+@{
+    var checkBoxesPropName = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var describedBy = !string.IsNullOrEmpty(Model.Hint) ? Model.HasError ? $"{checkBoxesPropName}-hint {checkBoxesPropName}-error" : $"{checkBoxesPropName}-hint" : "";
+}
+
+<div class="govuk-form-group@(Model.HasError ? " govuk-form-group--error" : "")">
+    <fieldset class="govuk-fieldset" aria-describedby="@describedBy">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+                @Model.Question
+            </h1>
+        </legend>
+        @if (!string.IsNullOrEmpty(Model.Hint))
+        {
+            <div id="@checkBoxesPropName-hint" class="govuk-hint">
+                <p>@Model.Hint</p>
+            </div>
+        }
+        @if (Model.HasError)
+        {
+            <span id="@checkBoxesPropName-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span><span asp-validation-for="Selected" class="govuk-error-message"></span>
+            </span>
+        }
+    <div class="govuk-checkboxes">
+        @{
+            var i = 0;
+        }
+        @foreach (var checkbox in Model.CheckBoxes)
+        {
+            var id = i == 0 ? "" : i.ToString();
+            var checkedVal = checkbox.Selected ? "checked" : "";
+            <div class="govuk-checkboxes__item">
+                <label>
+                    <input class="govuk-checkboxes__input" type="checkbox" name="@checkBoxesPropName.@nameof(Model.Selected)" value="@checkbox.Value" @checkedVal>
+                    <span class="govuk-label govuk-checkboxes__label">
+                        @checkbox.Text
+                    </span>
+                </label>
+            </div>
+            i++;
+        }
+    </div>
+    </fieldset>
+</div>

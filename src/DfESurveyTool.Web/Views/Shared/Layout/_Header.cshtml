@@ -28,6 +28,7 @@
                         var activeClass = "govuk-header__navigation-item--active";
                         var homeActiveClass = ViewBag.ActiveHeaderItem == ActiveHeaderItem.Home ? activeClass : "";
                         var testActiveClass = ViewBag.ActiveHeaderItem == ActiveHeaderItem.Test ? activeClass : "";
+                        var exampleActiveClass = ViewBag.ActiveHeaderItem == ActiveHeaderItem.Example ? activeClass : "";
                     }
 
                     <li class="govuk-header__navigation-item @homeActiveClass">
@@ -36,6 +37,10 @@
 
                     <li class="govuk-header__navigation-item @testActiveClass">
                         <a class="govuk-header__link" asp-controller="Home" asp-action="Test">Test</a>
+                    </li>
+
+                    <li class="govuk-header__navigation-item @exampleActiveClass">
+                        <a class="govuk-header__link" asp-controller="Example" asp-action="Form">Example</a>
                     </li>
                 </ul>
             </nav>

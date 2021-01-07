@@ -51,7 +51,7 @@
 
     <!-- Main content -->
     <div class="govuk-width-container">
-        <!-- Want to help banner -->
+        <!-- Phase banner -->
         <partial name="layout/_Banner" />
 
         <main class="govuk-main-wrapper" id="main-content" role="main">
@@ -68,7 +68,8 @@
             gaKey: '@KeysConfig.Value.GoogleAnalyticsKey'
         };
     </script>
-    <partial name="Layout/_AntiForgery" />
+
+    @*<partial name="Layout/_AntiForgery" />*@
 
     <script src="~/assets/js/dependencies.min.js" asp-append-version="true"></script>
     <script src="~/assets/js/app.min.js" asp-append-version="true" async></script>

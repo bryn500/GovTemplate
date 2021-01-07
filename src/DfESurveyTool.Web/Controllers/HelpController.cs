@@ -28,6 +28,7 @@ namespace DfESurveyTool.Web.Controllers
         }
 
         [HttpGet("cookies")]
+        [ResponseCache(CacheProfileName = "Never")]
         public IActionResult Cookies()
         {
             ViewData["Title"] = "Cookies";
@@ -41,6 +42,7 @@ namespace DfESurveyTool.Web.Controllers
         }
 
         [HttpPost("cookies")]
+        [ResponseCache(CacheProfileName = "Never")]
         public IActionResult Cookies(CookiePreferencesViewModel model)
         {
             ViewData["Title"] = "Cookies";

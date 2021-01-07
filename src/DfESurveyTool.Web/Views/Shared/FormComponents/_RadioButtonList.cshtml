@@ -1,7 +1,7 @@
 ﻿@model RadioButtonsViewModel
 
 @{
-    var radioPropName = ViewData.TemplateInfo.HtmlFieldPrefix + "." + nameof(Model.Radio); 
+    var radioPropName = ViewData.TemplateInfo.HtmlFieldPrefix + "." + nameof(Model.Selected);
     var describedBy = !string.IsNullOrEmpty(Model.Hint) ? Model.HasError ? $"{radioPropName}-hint {radioPropName}-error" : $"{radioPropName}-hint" : "";
 }
 
@@ -20,8 +20,8 @@
         }
         @if (Model.HasError)
         {
-            <span id="radio-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span><span asp-validation-for="Radio" class="govuk-error-message"></span>
+            <span id="@radioPropName-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span><span asp-validation-for="Selected" class="govuk-error-message"></span>
             </span>
         }
         <div class="govuk-radios govuk-radios--inline">
@@ -32,7 +32,7 @@
             {
                 var id = i == 0 ? "" : i.ToString();
                 <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" asp-for="Radio" type="radio" id="@radioPropName@id" value="@radio.Value">
+                    <input class="govuk-radios__input" asp-for="Selected" type="radio" id="@radioPropName@id" value="@radio.Value">
                     <label class="govuk-label govuk-radios__label" for="changed-name">
                         @radio.Text
                     </label>

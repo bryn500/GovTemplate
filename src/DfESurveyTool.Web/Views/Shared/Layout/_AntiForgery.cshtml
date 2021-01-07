@@ -1,4 +1,6 @@
-﻿@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+﻿<!-- Adds antiforgery token to JS app object for use in ajax calls -->
+
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
 
 @functions{
     public string GetAntiXsrfRequestToken()

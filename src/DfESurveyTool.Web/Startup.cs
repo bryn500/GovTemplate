@@ -123,7 +123,7 @@ namespace DfESurveyTool.Web
                 //    pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 // AD pages
-                endpoints.MapRazorPages();                
+                endpoints.MapRazorPages();
             });
         }
     }

@@ -1,39 +1,41 @@
-﻿@model RadioButtonsViewModel
+﻿@model string
 
 @{
-    var radioPropName = ViewData.TemplateInfo.HtmlFieldPrefix + "." + nameof(Model.Selected);
-    var describedBy = !string.IsNullOrEmpty(Model.Hint) ? Model.HasError ? $"{radioPropName}-hint {radioPropName}-error" : $"{radioPropName}-hint" : "";
+    OptionsViewModel optionsModel = (OptionsViewModel)ViewData["RadioQuestion"];
+    var propName = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var hasError = ViewData.FieldHasError(propName);
+    var describedBy = !string.IsNullOrEmpty(optionsModel.Hint) ? hasError ? $"{propName}-hint {propName}-error" : $"{propName}-hint" : "";
 }
 
-<div class="govuk-form-group@(Model.HasError ? " govuk-form-group--error" : "")">
+<div class="govuk-form-group@(hasError ? " govuk-form-group--error" : "")">
     <fieldset class="govuk-fieldset" aria-describedby="@describedBy">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-                @Model.Question
-            </h1>
+            <span class="govuk-fieldset__heading govuk-label govuk-!-font-weight-bold">
+                @optionsModel.Question
+            </span>
         </legend>
-        @if (!string.IsNullOrEmpty(Model.Hint))
+        @if (!string.IsNullOrEmpty(optionsModel.Hint))
         {
-            <div id="@radioPropName-hint" class="govuk-hint">
-                <p>@Model.Hint</p>
+            <div id="@propName-hint" class="govuk-hint">
+                <p>@optionsModel.Hint</p>
             </div>
         }
-        @if (Model.HasError)
+        @if (hasError)
         {
-            <span id="@radioPropName-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span><span asp-validation-for="Selected" class="govuk-error-message"></span>
+            <span id="@propName-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span><span asp-validation-for="@Model" class="govuk-error-message"></span>
             </span>
         }
         <div class="govuk-radios govuk-radios--inline">
             @{ 
                 var i = 0;
             }
-            @foreach (var radio in Model.Radios)
+            @foreach (var radio in optionsModel.Options)
             {
-                var id = i == 0 ? "" : i.ToString();
+                var id = i == 0 ? "" : "." + i.ToString();
                 <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" asp-for="Selected" type="radio" id="@radioPropName@id" value="@radio.Value">
-                    <label class="govuk-label govuk-radios__label" for="changed-name">
+                    <input class="govuk-radios__input" asp-for="@Model" type="radio" id="@propName@id" value="@radio.Value">
+                    <label class="govuk-label govuk-radios__label" for="@propName.@id">
                         @radio.Text
                     </label>
                 </div>

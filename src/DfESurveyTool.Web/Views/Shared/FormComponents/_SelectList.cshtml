@@ -1,0 +1,29 @@
+﻿@model string
+
+@{
+    OptionsViewModel optionsModel = (OptionsViewModel)ViewData["SelectQuestion"];
+    var propName = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var hasError = ViewData.FieldHasError(propName);
+    var describedBy = !string.IsNullOrEmpty(optionsModel.Hint) ? hasError ? $"{propName}-hint {propName}-error" : $"{propName}-hint" : "";
+}
+
+<div class="govuk-form-group@(hasError ? " govuk-form-group--error" : "")" aria-describedby="@describedBy">
+    <label class="govuk-label govuk-!-font-weight-bold" for="@propName">
+        @optionsModel.Question
+    </label>
+    @if (!string.IsNullOrEmpty(optionsModel.Hint))
+    {
+        <div id="@propName-hint" class="govuk-hint">
+            <p>@optionsModel.Hint</p>
+        </div>
+    }
+    @if (hasError)
+    {
+        <span id="@propName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span><span asp-validation-for="@Model" class="govuk-error-message"></span>
+        </span>
+    }
+    <select class="govuk-select" asp-for="@Model" asp-items="@optionsModel.Options" id="@propName">
+        <option value="">Please Select an option</option>
+    </select>
+</div>

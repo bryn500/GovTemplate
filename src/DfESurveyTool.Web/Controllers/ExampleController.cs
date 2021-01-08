@@ -47,12 +47,11 @@ namespace DfESurveyTool.Web.Controllers
 
         public void SetExampleFormModel(ExampleFormViewModel model)
         {
-            var radioErrors = ViewData?.ModelState[nameof(model.RadioQuestion) + "." + nameof(model.RadioQuestion.Selected)]?.Errors?.Any();
-            model.RadioQuestion = new RadioButtonsViewModel()
+            model.RadioQuestion = new OptionsViewModel()
             {
                 Question = "Yes or No?",
                 Hint = "This is a hint",
-                Radios = new List<SelectListItem>() {
+                Options = new List<SelectListItem>() {
                     new SelectListItem() {
                         Selected = false,
                         Text = "Yes",
@@ -63,16 +62,14 @@ namespace DfESurveyTool.Web.Controllers
                         Text = "No",
                         Value = "False"
                     }
-                },
-                HasError = radioErrors.HasValue && radioErrors.Value
+                }
             };
 
-            var radioErrors2 = ViewData?.ModelState[nameof(model.RadioQuestion2) + "." + nameof(model.RadioQuestion2.Selected)]?.Errors?.Any();
-            model.RadioQuestion2 = new RadioButtonsViewModel()
+            model.RadioQuestion2 = new OptionsViewModel()
             {
                 Question = "True or False?",
                 Hint = "This is a hint",
-                Radios = new List<SelectListItem>() {
+                Options = new List<SelectListItem>() {
                     new SelectListItem() {
                         Text = "Yes",
                         Value = "True"
@@ -85,17 +82,14 @@ namespace DfESurveyTool.Web.Controllers
                         Text = "Maybe",
                         Value = "Maybe"
                     }
-                },
-                HasError = radioErrors2.HasValue && radioErrors2.Value
+                }
             };
 
-            var selectedCheckBoxes = model.CheckBoxQuestion.Selected;
-            var checkBoxErrors = ViewData?.ModelState[nameof(model.CheckBoxQuestion) + "." + nameof(model.CheckBoxQuestion.Selected)]?.Errors?.Any();
-            model.CheckBoxQuestion = new CheckBoxesViewModel()
+            model.CheckBoxQuestion = new OptionsViewModel()
             {
                 Question = "True or False?",
                 Hint = "This is a hint",
-                CheckBoxes = new List<SelectListItem>() {
+                Options = new List<SelectListItem>() {
                     new SelectListItem() {
                         Text = "Yes",
                         Value = "True"
@@ -104,22 +98,14 @@ namespace DfESurveyTool.Web.Controllers
                         Text = "No",
                         Value = "False"
                     }
-                },
-                HasError = checkBoxErrors.HasValue && checkBoxErrors.Value
+                }
             };
 
-            if (selectedCheckBoxes != null)
-                foreach (var item in model.CheckBoxQuestion.CheckBoxes)
-                    item.Selected = selectedCheckBoxes.Contains(item.Value);
-
-
-            var selectedCheckBoxes2 = model.CheckBoxQuestion2.Selected;
-            var checkBoxErrors2 = ViewData?.ModelState[nameof(model.CheckBoxQuestion2) + "." + nameof(model.CheckBoxQuestion2.Selected)]?.Errors?.Any();
-            model.CheckBoxQuestion2 = new CheckBoxesViewModel()
+            model.CheckBoxQuestion2 = new OptionsViewModel()
             {
                 Question = "True or False?",
                 Hint = "This is a hint",
-                CheckBoxes = new List<SelectListItem>() {
+                Options = new List<SelectListItem>() {
                     new SelectListItem() {
                         Selected = false,
                         Text = "Yes",
@@ -135,14 +121,31 @@ namespace DfESurveyTool.Web.Controllers
                         Text = "Maybe",
                         Value = "Maybe"
                     }
-                },
-                HasError = checkBoxErrors2.HasValue && checkBoxErrors2.Value
+                }
             };
 
-            if (selectedCheckBoxes2 != null)
-                foreach (var item in model.CheckBoxQuestion2.CheckBoxes)
-                    item.Selected = selectedCheckBoxes2.Contains(item.Value);
-
+            model.SelectQuestion = new OptionsViewModel()
+            {
+                Question = "Select your option",
+                Hint = "This is a hint",
+                Options = new List<SelectListItem>() {
+                    new SelectListItem() {
+                        Selected = false,
+                        Text = "Yes",
+                        Value = "True"
+                    },
+                    new SelectListItem() {
+                        Selected = false,
+                        Text = "No",
+                        Value = "False"
+                    },
+                    new SelectListItem() {
+                        Selected = false,
+                        Text = "Maybe",
+                        Value = "Maybe"
+                    }
+                }
+            };
         }
     }
 }

@@ -6,12 +6,23 @@
     Example form
 </h1>
 
-<form method="post" novalidate>    
+<form method="post" novalidate>
     <partial name="FormComponents/_TextField" for="Text" />
-    <partial name="FormComponents/_RadioButtonList" for="RadioQuestion" />
-    <partial name="FormComponents/_RadioButtonList" for="RadioQuestion2" />
-    <partial name="FormComponents/_CheckBoxList" for="CheckBoxQuestion" />
-    <partial name="FormComponents/_CheckBoxList" for="CheckBoxQuestion2" />
+
+    @{ ViewData["RadioQuestion"] = Model.RadioQuestion; }
+    <partial name="FormComponents/_RadioButtonList" for="Radio1" view-data="ViewData" />
+
+    @{ ViewData["RadioQuestion"] = Model.RadioQuestion2; }
+    <partial name="FormComponents/_RadioButtonList" for="Radio2" view-data="ViewData" />
+
+    @{ ViewData["CheckBoxQuestion"] = Model.CheckBoxQuestion; }
+    <partial name="FormComponents/_CheckBoxList" for="CheckBox1" view-data="ViewData" />
+
+    @{ ViewData["CheckBoxQuestion"] = Model.CheckBoxQuestion2; }
+    <partial name="FormComponents/_CheckBoxList" for="CheckBox2" view-data="ViewData" />
+
+    @{ ViewData["SelectQuestion"] = Model.SelectQuestion; }
+    <partial name="FormComponents/_SelectList" for="Select1" view-data="ViewData" />
 
     <!-- Submit -->
     <button class="button govuk-button" type="submit">Submit</button>

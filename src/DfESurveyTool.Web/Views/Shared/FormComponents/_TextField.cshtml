@@ -2,16 +2,16 @@
 
 @{
     var field = ViewData.TemplateInfo.HtmlFieldPrefix;
-    var textFieldHasError = !ViewData.ModelState.IsValid;
+    var hasError = ViewData.FieldHasError(field);
 }
 
-<div class="govuk-form-group @(textFieldHasError ? "govuk-form-group--error" : "")">
+<div class="govuk-form-group @(hasError ? "govuk-form-group--error" : "")">
     <label class="govuk-label govuk-!-font-weight-bold" asp-for="@Model">Text Field</label>
-    @if (textFieldHasError)
+    @if (hasError)
     {
         <span class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span><span asp-validation-for="@Model"></span>
         </span>
     }
-    <input class="govuk-input @(textFieldHasError ? "govuk-input--error" : "")" asp-for="@Model" type="text" />
+    <input class="govuk-input @(hasError ? "govuk-input--error" : "")" asp-for="@Model" type="text" />
 </div> 

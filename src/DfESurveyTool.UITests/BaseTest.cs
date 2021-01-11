@@ -2,7 +2,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Edge;
+//using OpenQA.Selenium.Edge;
+using Microsoft.Edge.SeleniumTools;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 
@@ -33,7 +34,7 @@ namespace DfESurveyTool.UITests
         {
             get => new[]
             {
-                //new object[] {"Chrome"},
+                new object[] {"Chrome"},
                 // edge fails currently, although was fine for previous project
                 //new object[] {"Edge"},
                 // these others are very slow...
@@ -85,6 +86,7 @@ namespace DfESurveyTool.UITests
                 case "Edge":
                     Driver = new EdgeDriver(new EdgeOptions()
                     {
+                        UseChromium = false
                     });
                     break;
                 default:
